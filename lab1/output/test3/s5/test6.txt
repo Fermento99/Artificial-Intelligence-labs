@@ -1,0 +1,6 @@
+ 2   7   6  
+ 0   4   1  
+ 5   3      
+
+manhattan:   	vs: 1876	pl: 24
+well placed: 	vs: 18071	pl: 24

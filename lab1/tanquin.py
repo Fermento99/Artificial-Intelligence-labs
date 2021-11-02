@@ -23,7 +23,7 @@ def printResult(visited: dict, currState: Board, display=0):
         elif display == 1:
             print(currState.howToMove(parent), end=' ')
         path += 1
-    print('\n\tvisited states: {}\n\tlength of found path: {}'.format(len(visited), path))
+    print('\tvs: {}\tpl: {}'.format(len(visited), path))
 
 
 def astar(objective: list[int], heuristic: callable):
@@ -44,8 +44,7 @@ def astar(objective: list[int], heuristic: callable):
         closed[currState.frags] = parent
 
         if currState.frags == end.frags:
-            print('\t\t\t\t', end='\r')
-            printResult(closed, currState, 1)
+            printResult(closed, currState, 0)
             break
 
         # print('{}'.format(currState.heurDist), end='\r')
@@ -81,23 +80,19 @@ def test(boardCount: int, size: int, randomMoves=0, shuffleMoves=0, manHeu=False
         print(Board(perm))
     
         if manHeu:
-            print('manhattan:')
+            print('manhattan:  ', end=' ')
             astar(tuple(perm), manhattan)
-            print()
         if wellHeu:
-            print('well placed:')
+            print('well placed:', end=' ')
             astar(tuple(perm), wellPlaced)
-            print()
         if noHeu:
-            print('no heuristic:')
+            print('no heuristic:', end=' ')
             astar(tuple(perm), noHeuristic)
-            print()
-        print()
-        print()
+
 
 
 def main():
-    test(10, 3, randomMoves=30, manHeu=True, wellHeu=True)
+    test(1, 4, shuffleMoves=1, manHeu=True)
 
 if __name__ == "__main__":
     main()

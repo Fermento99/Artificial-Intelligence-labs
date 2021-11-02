@@ -1,0 +1,6 @@
+ 4   1   5  
+ 0   2   3  
+     6   7  
+
+manhattan:   	vs: 165	pl: 16
+well placed: 	vs: 597	pl: 16

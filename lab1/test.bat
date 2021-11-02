@@ -1,0 +1,1 @@
+for /L %%i in (0, 1, 9) do python tanquin.py > ./output/test4/s1/testMAN%%i.txt
