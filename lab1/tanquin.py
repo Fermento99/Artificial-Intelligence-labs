@@ -44,7 +44,7 @@ def astar(objective: list[int], heuristic: callable):
         closed[currState.frags] = parent
 
         if currState.frags == end.frags:
-            printResult(closed, currState, 0)
+            printResult(closed, currState, 1)
             break
 
         # print('{}'.format(currState.heurDist), end='\r')
@@ -95,4 +95,12 @@ def main():
     test(1, 4, shuffleMoves=1, manHeu=True)
 
 if __name__ == "__main__":
-    main()
+    Board.size = int(sys.argv[1])
+    perm = [int(arg) for arg in sys.argv[2:]]
+    if len(perm) > 0:
+        perm.append(len(perm))
+        print(Board(perm))
+        astar(tuple(perm), manhattan)
+        astar(tuple(perm), wellPlaced)
+    else:
+        main()
